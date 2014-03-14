@@ -43,8 +43,8 @@ namespace KinectIntegrationForSusan
         string statusNXT = "disconnected";
         string statusKinect = "initializing";
 
-        double deadzone = 0.4;
-        double maxPower = 85;
+        double deadzone = 0.4; //EDITABLE - Percent of threshold that is ignored and returns 0 as the power
+        double maxPower = 85; //EDITABLE - Maximum allowed power
 
         double percentL = 0;
         double percentR = 0;
@@ -164,51 +164,6 @@ namespace KinectIntegrationForSusan
         }
 
         #endregion
-
-        void MainWindow_Loaded(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void refreshStat()
-        {
-            this.labelStatus.Text = statusKinect;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (speechRecognizer != null)
-            {
-                speechRecognizer.RecognizeAsyncCancel();
-                speechRecognizer.RecognizeAsyncStop();
-            }
-            if (sensor != null)
-            {
-                sensor.AudioSource.Stop();
-                sensor.Stop();
-                sensor.Dispose();
-                sensor = null;
-            }
-        }
-
-        public float KinectX(Joint joint)
-        {
-            CoordinateMapper mapper = sensor.CoordinateMapper;
-            var map = mapper.MapSkeletonPointToColorPoint(joint.Position, sensor.ColorStream.Format);
-            return map.X + this.videoImage.Bounds.X;
-        }
-
-        public float KinectY(Joint joint)
-        {
-            CoordinateMapper mapper = sensor.CoordinateMapper;
-            var map = mapper.MapSkeletonPointToColorPoint(joint.Position, sensor.ColorStream.Format);
-            return map.Y + this.videoImage.Bounds.Y;
-        }
 
         #region Gesture Processing
 
@@ -775,6 +730,7 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
 
         #endregion
 
+        #region NXT Managment
         private void updateNxt()
         {
             if (nxt == null || !nxt.IsConnected)
@@ -872,24 +828,6 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
             Console.Out.WriteLine("Done a send");
         }
 
-        private void buttonTiltUp_Click(object sender, EventArgs e)
-        {
-            if (sensor == null || sensor.Status != KinectStatus.Connected)
-                return;
-
-            if (sensor.ElevationAngle < sensor.MaxElevationAngle - 5)
-                sensor.ElevationAngle += 5;
-        }
-
-        private void buttonTiltDown_Click(object sender, EventArgs e)
-        {
-            if (sensor == null || sensor.Status != KinectStatus.Connected)
-                return;
-
-            if (sensor.ElevationAngle > sensor.MinElevationAngle + 5)
-                sensor.ElevationAngle -= 5;
-        }
-
         private void btnTglDrive_Click(object sender, EventArgs e)
         {
             if (isDriving)
@@ -941,5 +879,72 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
             //this.labelStatusNxt.Text = "Disconnected";
             //this.labelStatusNxt.Visible = true;
         }
+        #endregion 
+
+        #region Kinect Managment
+
+        void MainWindow_Loaded(object sender, EventArgs e)
+        {
+
+        }
+
+        private void refreshStat()
+        {
+            this.labelStatus.Text = statusKinect;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (speechRecognizer != null)
+            {
+                speechRecognizer.RecognizeAsyncCancel();
+                speechRecognizer.RecognizeAsyncStop();
+            }
+            if (sensor != null)
+            {
+                sensor.AudioSource.Stop();
+                sensor.Stop();
+                sensor.Dispose();
+                sensor = null;
+            }
+        }
+
+        public float KinectX(Joint joint)
+        {
+            CoordinateMapper mapper = sensor.CoordinateMapper;
+            var map = mapper.MapSkeletonPointToColorPoint(joint.Position, sensor.ColorStream.Format);
+            return map.X + this.videoImage.Bounds.X;
+        }
+
+        public float KinectY(Joint joint)
+        {
+            CoordinateMapper mapper = sensor.CoordinateMapper;
+            var map = mapper.MapSkeletonPointToColorPoint(joint.Position, sensor.ColorStream.Format);
+            return map.Y + this.videoImage.Bounds.Y;
+        }
+
+        private void buttonTiltUp_Click(object sender, EventArgs e)
+        {
+            if (sensor == null || sensor.Status != KinectStatus.Connected)
+                return;
+
+            if (sensor.ElevationAngle < sensor.MaxElevationAngle - 5)
+                sensor.ElevationAngle += 5;
+        }
+
+        private void buttonTiltDown_Click(object sender, EventArgs e)
+        {
+            if (sensor == null || sensor.Status != KinectStatus.Connected)
+                return;
+
+            if (sensor.ElevationAngle > sensor.MinElevationAngle + 5)
+                sensor.ElevationAngle -= 5;
+        }
+        #endregion
     }
 }
