@@ -143,6 +143,7 @@
     <None Include="Resources\bluetooth-logo.png" />
     <None Include="Resources\kifs_noimg.png" />
     <None Include="Resources\kifs_notxt.png" />
+    <Content Include="KIFS.c" />
     <Content Include="Resources\kinect_blue.png" />
     <None Include="Resources\voice_red.png" />
     <None Include="Resources\voice_green.png" />
