@@ -144,9 +144,9 @@ namespace KinectIntegrationForSusan
                 this.nxt.MotorB = new NxtMotor();
                 this.nxt.MotorC = new NxtMotor();
 
-                if (nxt.Programs.Contains("KIFS.c"))
+                if (nxt.Programs.Contains("KIFS.rxe"))
                 {
-                    nxt.Program = "KIFS.c";
+                    nxt.Program = "KIFS.rxe";
                     this.isCustom = true;
                 }
 
@@ -218,7 +218,7 @@ namespace KinectIntegrationForSusan
                 //this.overlayPowL.Visible = true;
                 //this.overlayPowR.Visible = true;
 
-                this.labelDriver.ForeColor = System.Drawing.Color.Green;
+                this.labelStatus.ForeColor = System.Drawing.Color.Green;
                 this.pictureKinect.BackgroundImage = Properties.Resources.kinect_green;
             }
             Skeleton[] skeleSorted = skeletons.Where(s => s.TrackingState == SkeletonTrackingState.Tracked)

@@ -94,7 +94,6 @@
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.timerUpdateNxt = new System.Windows.Forms.Timer(this.components);
             this.label18 = new System.Windows.Forms.Label();
-            this.radioStandard = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureNXT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureKinect)).BeginInit();
@@ -252,6 +251,7 @@
             this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 16;
             this.label1.Text = "label1";
+            this.label1.Visible = false;
             // 
             // textBoxComPort
             // 
@@ -259,7 +259,7 @@
             this.textBoxComPort.Name = "textBoxComPort";
             this.textBoxComPort.Size = new System.Drawing.Size(31, 26);
             this.textBoxComPort.TabIndex = 26;
-            this.textBoxComPort.Text = "8";
+            this.textBoxComPort.Text = "7";
             // 
             // buttonBluetooth
             // 
@@ -783,18 +783,6 @@
             this.label18.TabIndex = 62;
             this.label18.Text = "susan stop spin";
             // 
-            // radioStandard
-            // 
-            this.radioStandard.AutoSize = true;
-            this.radioStandard.ForeColor = System.Drawing.Color.White;
-            this.radioStandard.Location = new System.Drawing.Point(16, 413);
-            this.radioStandard.Name = "radioStandard";
-            this.radioStandard.Size = new System.Drawing.Size(262, 24);
-            this.radioStandard.TabIndex = 63;
-            this.radioStandard.TabStop = true;
-            this.radioStandard.Text = "Standard 2-Wheel Configuration";
-            this.radioStandard.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -802,7 +790,6 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Desktop;
             this.ClientSize = new System.Drawing.Size(1912, 1038);
-            this.Controls.Add(this.radioStandard);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.label9);
@@ -963,7 +950,6 @@
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.Timer timerUpdateNxt;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.RadioButton radioStandard;
     }
 }
 
