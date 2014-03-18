@@ -534,7 +534,7 @@ namespace KinectIntegrationForSusan
                 bmap.UnlockBits(bmapdata);
                 videoImage.Image = bmap;
             }
-            Console.Out.WriteLine("Rendered image");
+            //Console.Out.WriteLine("Rendered image");
         }
 
         #endregion
@@ -761,24 +761,16 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
                 this.nxt.MotorC.Run(0, 0);
             }
 
-            //string msgB;
+            string msgB;
 
-            //if (liftUp)
-            //    msgB = "B80";
-            //else if (liftDown)
-            //    msgB = "b80";
-            //else
-            //    msgB = "B00";
+            if (liftUp)
+                msgB = "B80";
+            else if (liftDown)
+                msgB = "b80";
+            else
+                msgB = "B00";
 
-            //this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, msgB.ToCharArray()[0] + "");
-            //if (msgB.ToCharArray()[1] == '0')
-            //    this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, Encoding.ASCII.GetBytes("z"));
-            //else
-            //    this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, msgB.ToCharArray()[1] + "");
-            //if (msgB.ToCharArray()[2] == '0')
-            //    this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, Encoding.ASCII.GetBytes("z"));
-            //else
-            //    this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, msgB.ToCharArray()[2] + "");
+            //this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, Encoding.ASCII.GetBytes(msgB));
             
             //Drive powers
             string msgL;
@@ -793,15 +785,9 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
             else
                 msgL = "L" + powerL;
 
-            this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, Encoding.ASCII.GetBytes(msgL.Substring(0, 1)));
-            if (msgL.ToCharArray()[1] == '0')
-                this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, Encoding.ASCII.GetBytes("z"));
-            else
-                this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, Encoding.ASCII.GetBytes(msgL.Substring(1, 1)));
-            if (msgL.ToCharArray()[2] == '0')
-                this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, Encoding.ASCII.GetBytes("z"));
-            else
-                this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, Encoding.ASCII.GetBytes(msgL.Substring(2, 1)));
+            System.Threading.Thread.Sleep(60);
+
+            this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, Encoding.ASCII.GetBytes(msgL));
 
             string msgR;
 
@@ -815,17 +801,11 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
             else
                 msgR = "R" + powerR;
 
-            this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, msgR.ToCharArray()[0] + "");
-            if (msgR.ToCharArray()[1] == '0')
-                this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, Encoding.ASCII.GetBytes("z"));
-            else
-                this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, msgR.ToCharArray()[1] + "");
-            if (msgR.ToCharArray()[2] == '0')
-                this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, Encoding.ASCII.GetBytes("z"));
-            else
-                this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, msgR.ToCharArray()[2] + "");
+            System.Threading.Thread.Sleep(60);
 
-            Console.Out.WriteLine("Done a send");
+            this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, Encoding.ASCII.GetBytes(msgR));
+
+            Console.Out.WriteLine("Done a send of " + msgB + msgL + msgR);
         }
 
         private void btnTglDrive_Click(object sender, EventArgs e)
@@ -878,6 +858,11 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
             //this.pictureNXT.BackgroundImage = Properties.Resources.nxt_red;
             //this.labelStatusNxt.Text = "Disconnected";
             //this.labelStatusNxt.Visible = true;
+        }
+        private void trackBarPollRate_ValueChanged(object sender, EventArgs e)
+        {
+            timerUpdateNxt.Interval = trackBarPollRate.Value;
+            labelPollRate.Text = "Poll Rate: " + trackBarPollRate.Value + " ms";
         }
         #endregion 
 
