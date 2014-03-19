@@ -96,6 +96,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.trackBarPollRate = new System.Windows.Forms.TrackBar();
             this.labelPollRate = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureNXT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureKinect)).BeginInit();
@@ -121,6 +122,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPollRate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelMotorsL
@@ -807,6 +809,16 @@
             this.labelPollRate.TabIndex = 64;
             this.labelPollRate.Text = "Poll Rate: 100 ms";
             // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(1604, 417);
+            this.trackBar1.Maximum = 85;
+            this.trackBar1.Minimum = -85;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(295, 69);
+            this.trackBar1.TabIndex = 65;
+            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -814,6 +826,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Desktop;
             this.ClientSize = new System.Drawing.Size(1912, 1038);
+            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.labelPollRate);
             this.Controls.Add(this.trackBarPollRate);
             this.Controls.Add(this.label18);
@@ -906,6 +919,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPollRate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -979,6 +993,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TrackBar trackBarPollRate;
         private System.Windows.Forms.Label labelPollRate;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
 

@@ -785,7 +785,7 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
             else
                 msgL = "L" + powerL;
 
-            System.Threading.Thread.Sleep(60);
+            //System.Threading.Thread.Sleep(60);
 
             this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, Encoding.ASCII.GetBytes(msgL));
 
@@ -801,7 +801,7 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
             else
                 msgR = "R" + powerR;
 
-            System.Threading.Thread.Sleep(60);
+            //System.Threading.Thread.Sleep(60);
 
             this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, Encoding.ASCII.GetBytes(msgR));
 
@@ -851,6 +851,7 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
 
         private void timerUpdateNxt_Tick(object sender, EventArgs e)
         {
+            Console.Out.WriteLine("tick!");
             this.timerUpdateNxt.Enabled = true;
             if (nxt != null)
                 //while (nxt.IsConnected)
@@ -931,5 +932,10 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
                 sensor.ElevationAngle -= 5;
         }
         #endregion
+
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            powerR = trackBar1.Value;
+        }
     }
 }
