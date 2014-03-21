@@ -154,7 +154,7 @@ namespace KinectIntegrationForSusan
 
                 this.labelStatusNxt.Text = "Connected to " + nxt.Name;
                 this.timerHideStatNxt.Enabled = true;
-                this.timerUpdateNxt.Enabled = true;
+                //this.timerUpdateNxt.Enabled = true;
             }
             catch (Exception enxt)
             {
@@ -169,6 +169,13 @@ namespace KinectIntegrationForSusan
 
         void sensor_SkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
         {
+            double powL = powerL;
+            double powR = powerR;
+            bool lUp = liftUp;
+            bool lDown = liftDown;
+            bool tUp = tiltUp;
+            bool tDown = tiltDown;
+
             using (var skeletonFrame = e.OpenSkeletonFrame())
             {
                 if (skeletonFrame == null)
@@ -263,6 +270,9 @@ namespace KinectIntegrationForSusan
             }
 
             Console.Out.WriteLine("Processed skeletons");
+
+            if (powerL != powL || powerR != powR || tiltDown != tDown || tiltUp != tUp || liftDown != lDown || liftUp != lUp)
+                updateNxt();
         }
 
         private void ProcessDriveGestures(Skeleton skeleton)
@@ -287,16 +297,16 @@ namespace KinectIntegrationForSusan
             if(isDriving)
             {
                 if (percentL < deadzone * -1)
-                    this.powerL = Math.Floor((percentL + deadzone) * 50 / 5) * 5;
+                    this.powerL = Math.Floor((percentL + deadzone) * 60 / 10) * 10;
                 else if (percentL > deadzone)
-                    this.powerL = Math.Floor((percentL - deadzone) * 50 / 5) * 5;
+                    this.powerL = Math.Floor((percentL - deadzone) * 60 / 10) * 10;
                 else
                     this.powerL = 0;
 
                 if (percentR < deadzone * -1)
-                    this.powerR = Math.Floor((percentR + deadzone) * 50 / 5) * 5;
+                    this.powerR = Math.Floor((percentR + deadzone) * 60 / 10) * 10;
                 else if (percentR > deadzone)
-                    this.powerR = Math.Floor((percentR - deadzone) * 50 / 5) * 5;
+                    this.powerR = Math.Floor((percentR - deadzone) * 60 / 10) * 10;
                 else
                     this.powerR = 0;
             }
@@ -805,7 +815,7 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
 
             this.nxt.CommLink.MessageWrite(NxtMailbox.Box0, Encoding.ASCII.GetBytes(msgR));
 
-            Console.Out.WriteLine("Done a send of " + msgB + msgL + msgR);
+            Console.Out.WriteLine("Done a send of " + msgB + msgL + msgR + " values: r " + powerR + " l " + powerL);
         }
 
         private void btnTglDrive_Click(object sender, EventArgs e)
@@ -851,7 +861,7 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
 
         private void timerUpdateNxt_Tick(object sender, EventArgs e)
         {
-            Console.Out.WriteLine("tick!");
+            Console.Out.WriteLine("tick! l" + powerL + " r" + powerR);
             this.timerUpdateNxt.Enabled = true;
             if (nxt != null)
                 //while (nxt.IsConnected)
