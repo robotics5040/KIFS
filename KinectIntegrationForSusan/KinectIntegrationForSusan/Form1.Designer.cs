@@ -94,9 +94,6 @@
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.timerUpdateNxt = new System.Windows.Forms.Timer(this.components);
             this.label18 = new System.Windows.Forms.Label();
-            this.trackBarPollRate = new System.Windows.Forms.TrackBar();
-            this.labelPollRate = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureNXT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureKinect)).BeginInit();
@@ -121,8 +118,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.videoImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPollRate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelMotorsL
@@ -788,37 +783,6 @@
             this.label18.TabIndex = 62;
             this.label18.Text = "susan stop spin";
             // 
-            // trackBarPollRate
-            // 
-            this.trackBarPollRate.Location = new System.Drawing.Point(9, 462);
-            this.trackBarPollRate.Maximum = 2000;
-            this.trackBarPollRate.Minimum = 10;
-            this.trackBarPollRate.Name = "trackBarPollRate";
-            this.trackBarPollRate.Size = new System.Drawing.Size(279, 69);
-            this.trackBarPollRate.TabIndex = 63;
-            this.trackBarPollRate.Value = 100;
-            this.trackBarPollRate.ValueChanged += new System.EventHandler(this.trackBarPollRate_ValueChanged);
-            // 
-            // labelPollRate
-            // 
-            this.labelPollRate.AutoSize = true;
-            this.labelPollRate.ForeColor = System.Drawing.Color.White;
-            this.labelPollRate.Location = new System.Drawing.Point(12, 432);
-            this.labelPollRate.Name = "labelPollRate";
-            this.labelPollRate.Size = new System.Drawing.Size(133, 20);
-            this.labelPollRate.TabIndex = 64;
-            this.labelPollRate.Text = "Poll Rate: 100 ms";
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.Location = new System.Drawing.Point(1604, 417);
-            this.trackBar1.Maximum = 85;
-            this.trackBar1.Minimum = -85;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(295, 69);
-            this.trackBar1.TabIndex = 65;
-            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -826,9 +790,6 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Desktop;
             this.ClientSize = new System.Drawing.Size(1912, 1038);
-            this.Controls.Add(this.trackBar1);
-            this.Controls.Add(this.labelPollRate);
-            this.Controls.Add(this.trackBarPollRate);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.label9);
@@ -918,8 +879,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.videoImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPollRate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -991,9 +950,6 @@
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.Timer timerUpdateNxt;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TrackBar trackBarPollRate;
-        private System.Windows.Forms.Label labelPollRate;
-        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
 

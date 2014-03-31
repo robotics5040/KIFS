@@ -870,11 +870,6 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
             //this.labelStatusNxt.Text = "Disconnected";
             //this.labelStatusNxt.Visible = true;
         }
-        private void trackBarPollRate_ValueChanged(object sender, EventArgs e)
-        {
-            timerUpdateNxt.Interval = trackBarPollRate.Value;
-            labelPollRate.Text = "Poll Rate: " + trackBarPollRate.Value + " ms";
-        }
         #endregion 
 
         #region Kinect Managment
@@ -942,10 +937,5 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
                 sensor.ElevationAngle -= 5;
         }
         #endregion
-
-        private void trackBar1_ValueChanged(object sender, EventArgs e)
-        {
-            powerR = trackBar1.Value;
-        }
     }
 }
