@@ -25,20 +25,32 @@
 task main()
 {
 
-	char msg[3] = {'n', 'n', 'n'};
+	char msg[2] = {'n', 'n'};
+	char msg2[2] = {'n', 'n'};
+	int charStart = 0;
 	int power = 0;
+	float p = 0;
 
 	while(true)
 	{
-		if(msg[2] != 'n')
+		if(msg[1] != 'n')
 		{
 			//PlayTone(500, 100);
 
 			char m1 = msg[0];
 			char m2 = msg[1];
-			char m3 = msg[2];
 
-			string powr = m2 + m3;
+			msg2 = msg;
+
+			string p1 = "0";
+
+			if (m2 != 'z')
+				p1 = m2;
+
+			power = atoi(p1) * 10;
+
+			string mstr = m1 + m2;
+			nxtDisplayCenteredTextLine(2, mstr);
 
 			if (m1 == 'l')
 			{
@@ -80,31 +92,20 @@ task main()
 			{
 				servo[servo2] = power;
 			}
+			p = power;
 
 			msg[0] = 'n';
 			msg[1] = 'n';
 			msg[2] = 'n';
 			power = 0;
+
+			charStart = motor[motorH];
 		}
 
 		if(message != 0)
 		{
-			if (msg[0] == 'n')
-				msg[0] = message;
-			else if (msg[1] == 'n')
-			{
-				msg[1] = message;
-				if (message == 'z')
-					power = 0;
-				else
-					power = message * 10;
-			}
-			else if (msg[2] == 'n')
-			{
-				msg[2] = message;
-				if (message != 'z')
-					power = power + message;
-			}
+			msg[0] = messageParm[0];
+			msg[1] = messageParm[1];
 
 			ClearMessage();
 		}

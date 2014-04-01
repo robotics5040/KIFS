@@ -587,8 +587,8 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
             }
 
             var phrases = new Choices();
-            phrases.Add("susan toggle driving");
-            phrases.Add("susan toggle manipulating");
+            phrases.Add("susan toggle drive");
+            phrases.Add("susan toggle manip");
             phrases.Add("susan ready flag");
             phrases.Add("susan idle flag");
             phrases.Add("susan spin flag");
@@ -757,13 +757,13 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
             //Tilt bucket
             if(tiltUp)
             {
-                this.nxt.MotorB.Run(80, 0);
-                this.nxt.MotorC.Run(80, 0);
+                this.nxt.MotorB.Run(95, 0);
+                this.nxt.MotorC.Run(95, 0);
             }
             else if(tiltDown)
             {
-                this.nxt.MotorB.Run(-80, 0);
-                this.nxt.MotorC.Run(-80, 0);
+                this.nxt.MotorB.Run(-95, 0);
+                this.nxt.MotorC.Run(-95, 0);
             }
             else
             {
@@ -774,9 +774,9 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
             string msgB;
 
             if (liftUp)
-                msgB = "B80";
+                msgB = "B08";
             else if (liftDown)
-                msgB = "b80";
+                msgB = "b08";
             else
                 msgB = "B00";
 
@@ -785,15 +785,10 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
             //Drive powers
             string msgL;
 
-            if(powerL < 0)
-                if (powerL > -10)
-                    msgL = "l0" + Math.Abs(powerL);
-                else
-                    msgL = "l" + Math.Abs(powerL);
-            else if (powerL < 10)
-                msgL = "L0" + powerL;
+            if (powerL < 0)
+                msgL = "l0" + Math.Floor(powerL / 10) * -1;
             else
-                msgL = "L" + powerL;
+                msgL = "L0" + Math.Floor(powerL / 10);
 
             //System.Threading.Thread.Sleep(60);
 
@@ -801,15 +796,10 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
 
             string msgR;
 
-            if(powerR < 0)
-                if (powerR > -10)
-                    msgR = "r0" + Math.Abs(powerR);
-                else
-                    msgR = "r" + Math.Abs(powerR);
-            else if (powerR < 10)
-                msgR = "R0" + powerR;
+            if (powerR < 0)
+                msgR = "r0" + Math.Floor(powerR / 10) * -1;
             else
-                msgR = "R" + powerR;
+                msgR = "R0" + Math.Floor(powerR / 10);
 
             //System.Threading.Thread.Sleep(60);
 
